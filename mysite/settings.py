@@ -1,3 +1,8 @@
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
 """
 Django settings for mysite project.
 
@@ -20,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^@+hk9-7si#7=h!)rb6%)qfg-8ba!s_w2x3%i1q!g0x^2ee=2s'
+SECRET_KEY = os.getenv('MY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'TRUE'
 
 ALLOWED_HOSTS = []
 
@@ -128,7 +133,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-import os
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
